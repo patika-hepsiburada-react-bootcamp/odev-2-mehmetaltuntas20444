@@ -1,38 +1,170 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body, #root {
+  background-color: #3680AC;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 20px 0 0;
+}
+
+.game-container {
+  padding: 20px 30px;
+  position: relative;
+  margin: auto;
+  height: 400px;
+  width: 700px;
+}
+
+.figure-container {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+
+.figure-part {
+  display: none;
+}
+
+.wrong-letters-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.wrong-letters-container p {
+  margin: 0 0 5px;
+}
+
+.wrong-letters-container span {
+  font-size: 24px;
+}
+
+.word {
+    display: flex;
+    letter-spacing: 20px;
+}
+
+.letter {
+  border-bottom: 3px solid #fff;
+  display: inline-flex;
+  font-size: 30px;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 0 10px;
+  height: 50px;
+  width: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.popup-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* display: flex; */
+  display: none;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.popup {
+  background: #ffce14;
+  border-radius: 5px;
+  box-shadow: 0 15px 10px 3px rgb(0 0 0 / 10%);
+  padding: 10px;
+  text-align: center;
+}
+
+.popup button {
+  cursor: pointer;
+  border-radius: 5px;
+  height: 47px;
+  font-weight: 500;
+  right: 0px;
+  z-index: 2;
+  background-color: rgb(255, 206, 20);
+  border-color: rgb(211, 206, 1);
+  padding: 10px 40px;
+}
+
+.popup button:active {
+  transform: scale(0.98);
+}
+
+.popup button:focus {
+  outline: 0;
+}
+
+.notification-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px 10px 0 0;
+  padding: 15px 20px;
+  position: absolute;
+  bottom: -50px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.notification-container p {
+  margin: 0;
+}
+
+.notification-container.show {
+  transform: translateY(-50px);
+}
+
+.rainbow-button {
+  margin-top: 30px;
+  width: calc(12vw + 6px);
+  height: calc(4vw + 6px);
+  background-image: linear-gradient(
+90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 14;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 2px 4px 0 rgba(82,82,82,0.50);
+}
+.rainbow-button:after {
+  content: attr(alt);
+  width: 12vw;
+  height: 4vw;
+  background-color: #3680AC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px 0 rgba(82,82,82,0.50);
+}
+.rainbow-button:hover {
+  animation:slidebg 2s linear infinite;
+}
+
+@keyframes slidebg {
   to {
-    transform: rotate(360deg);
+    background-position:20vw;
   }
+}
+
+.lost-text{
+  font-size: 16px;
+  color: #000;
 }
